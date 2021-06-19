@@ -2,11 +2,17 @@ import re
 
 file = open("./src/data_phone.json", 'r')
 text = file.read()
-print(text)
+file.close()
+# print(text)
 
 
-cell_phones = re.findall(r"[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]", text)
-print(f'Total amount of phone numbers with 13 digits: {len(cell_phones)}')
+phone_number = r'\+[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+found = re.findall(phone_number, text)
+# print(found)
+print(f"Total amount of phone numbers with 13 digits: {len(found)}")
 
-cell_phones_2 = re.findall(r"(\d{3})(\d{3})(\d{4})", text)
-print(cell_phones_2)
+phone_number1 = r"[(][0-6][0-9][0-9][)]\s\d{3}-\d{4}"
+found1 = re.findall(phone_number1, text)
+# print(found1)
+print(f'Total amount of phone numbers with 13 digits: {len(found1)}')
+

@@ -2,15 +2,18 @@ import re
 
 file = open("./src/data_corey.txt",'r')
 text = file.read()
-number = re.findall(r"(\d{3}[- \s]\d{3}[- \s]\d{4}|\(\d{3}\)\s*\d{3}[- \s]\d{4}|\d{3}[- \s]\d{4})", text)
-print(number)
+file.close()
+number = r"(\d{3}[-.]\d{3}[-.]\d{4})"
+found = re.findall(number, text)
+print(found)
 
-print(f"Total amount of phone numbers: {len(number)}")
+print(f"Total amount of phone numbers: {len(found)}")
 
-ending_number =  re.findall(r"^(\d{7})$", text)
-print(f"Total amount of phone numbers with ending 7: {len(ending_number)}")
+ending_number = r"(\d{3}[-.]\d{3}[-.]\d\d\d[7])"
+found1 =  re.findall(ending_number, text)
 
+print(f"Total amount of phone numbers with ending 7: {len(found1)}")
 
-mail_adres = re.findall(r'\S+@\S+', text)
-for i in mail_adres:
-    print(i)
+mail_adres = r'([a-zA-z]\D\S+@[a-zA-z]\D\S+\.(com|net))'
+found2 = re.findall(mail_adres, text)
+print(found2)
